@@ -7,7 +7,11 @@ body {
 }
 
 .container {
-    margin-top: 10%;
+    margin-top: 5%;
+}
+
+.startData {
+    text-align: center;
 }
 
 .display-container {
