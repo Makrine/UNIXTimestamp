@@ -10,30 +10,6 @@ function toBinary(num) {
 
     return formattedBinary;
 }
-
-function updateDisplay(binaryRepresentation, decimal) {
-    document.getElementById('binaryDisplay').textContent = binaryRepresentation;
-    document.getElementById('decimalDisplay').textContent = decimal;
-
-    var time = convertSeconds(decimal);
-
-    document.getElementById('normal').textContent = `${time.years} years, ${time.months} months, ${time.weeks} weeks, ${time.days} days, ${time.hours} hours, ${time.minutes} minutes, ${time.seconds} seconds`;
-}
-
-// Calculate the initial value based on the elapsed time since July 28, 2000, 17:30
-const startDate = new Date('2000-07-28T17:30:00.000+04:00');
-const currentTime = new Date();
-const elapsedTimeInSeconds = (currentTime - startDate) / 1000;
-
-let num = Math.floor(elapsedTimeInSeconds);
-
-updateDisplay(toBinary(num), num);
-
-setInterval(function() {
-    num++;
-    updateDisplay(toBinary(num), num);
-}, 1000);
-
 function convertSeconds(seconds) {
     const oneMinute = 60;
     const oneHour = oneMinute * 60;
@@ -72,4 +48,30 @@ function convertSeconds(seconds) {
         seconds: remainingSeconds
     };
 }
+
+function updateDisplay(binaryRepresentation, decimal) {
+    document.getElementById('binaryDisplay').textContent = binaryRepresentation;
+    document.getElementById('decimalDisplay').textContent = decimal;
+
+    var time = convertSeconds(decimal);
+
+    document.getElementById('normal').textContent = `${time.years} years, ${time.months} months, ${time.weeks} weeks, ${time.days} days, ${time.hours} hours, ${time.minutes} minutes, ${time.seconds} seconds`;
+}
+
+// Calculate the initial value based on the elapsed time since July 28, 2000, 17:30
+const startDate = new Date('2000-07-28T17:30:00.000+04:00');
+const currentTime = new Date();
+const elapsedTimeInSeconds = (currentTime - startDate) / 1000;
+
+
+let num = Math.floor(elapsedTimeInSeconds);
+
+updateDisplay(toBinary(num), num);
+
+setInterval(function() {
+    num++;
+    updateDisplay(toBinary(num), num);
+}, 1000);
+
+
 
